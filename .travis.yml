@@ -16,7 +16,7 @@ julia:
 script:
   - julia -e 'using Pkg; pkg"dev PackageCompiler"'
   - julia -e 'using Pkg; pkg"dev PyCall"'
-  - touch "$HOME/.julia/PyCall/snoopfile.jl"
+  - touch "$HOME/.julia/dev/PyCall/snoopfile.jl"
   - julia -e 'using Pkg; pkg"instantiate"'
   - julia -e 'using Pkg; pkg"precompile"'
   - julia -e 'using PackageCompiler; PackageCompiler.compile_incremental(:PyCall)'
