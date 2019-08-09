@@ -6,7 +6,6 @@ language: julia
 
 os:
   - linux
-  - osx
 
 julia:
   - 1.1
@@ -14,6 +13,5 @@ julia:
 script:
   - julia -e 'using Pkg; pkg"dev PackageCompiler PyCall"'
   - julia -e 'using PackageCompiler; push!(Base.LOAD_PATH, normpath(ENV["HOME"], ".julia/dev/PyCall")); PackageCompiler.compile_incremental(:PyCall)'
-  - if [[ "$TRAVIS_OS_NAME" == linux   ]]; then  time julia -J "$HOME/.julia/dev/PackageCompiler/sysimg/sys.so"    -e 'using PyCall'  ; fi
-  - if [[ "$TRAVIS_OS_NAME" == osx     ]]; then  time julia -J "$HOME/julia/lib/julia/sys.dylib" -e 'using PyCall'  ; fi
+  - time julia -J "$HOME/.julia/dev/PackageCompiler/sysimg/sys.so" -e 'using PyCall'
   - time julia -e 'using PyCall'
