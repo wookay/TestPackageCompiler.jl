@@ -16,11 +16,12 @@ julia:
 script:
   - julia -e 'using Pkg; pkg"dev PackageCompiler"'
   - julia -e 'using Pkg; pkg"dev PyCall"'
+  - touch "$HOME/.julia/PyCall/snoopfile.jl"
   - julia -e 'using Pkg; pkg"instantiate"'
   - julia -e 'using Pkg; pkg"precompile"'
   - julia -e 'using PackageCompiler; PackageCompiler.compile_incremental(:PyCall)'
-  - time julia -J $HOME/.julia/PackageCompiler/sysimg/sys.dylib -e 'using PyCall'
-  - time julia -J $HOME/.julia/PackageCompiler/sysimg/sys.dylib -e 'using PyCall'
+  - time julia -J "$HOME/.julia/PackageCompiler/sysimg/sys.dylib" -e 'using PyCall'
+  - time julia -J "$HOME/.julia/PackageCompiler/sysimg/sys.dylib" -e 'using PyCall'
   - time julia -e 'using PyCall'
   - time julia -e 'using PyCall'
 #  - julia -e 'using PackageCompiler; PackageCompiler.compile_incremental((:PyCall)'
