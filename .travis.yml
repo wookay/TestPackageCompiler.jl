@@ -17,6 +17,7 @@ script:
   - julia -e 'using Pkg; pkg"up"; pkg"add PyCall"; pkg"dev PackageCompiler"'
   - cd "$HOME/.julia/dev/PackageCompiler"
   - git checkout sd-notomls
+  - julia -e 'using Pkg; pkg"dev ."'
   - julia -e 'using PackageCompiler; PackageCompiler.compile_incremental(:PyCall)'
   - time julia -J "$HOME/.julia/dev/PackageCompiler/sysimg/sys.so" -e 'using PyCall'
   - time julia -J "$HOME/.julia/dev/PackageCompiler/sysimg/sys.so" -e 'using PyCall'
