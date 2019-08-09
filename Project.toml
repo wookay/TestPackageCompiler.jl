@@ -1,0 +1,7 @@
+name = "TestPackageCompiler"
+uuid = "93678422-ba54-11e9-0efd-6fcd469da77c"
+authors = ["WooKyoung Noh <wookay.noh@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+PackageCompiler = "9b87118b-4619-50d2-8e1e-99f35a4d4d9d"
